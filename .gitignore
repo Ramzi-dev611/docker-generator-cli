@@ -1,0 +1,5 @@
+# removing node_modules
+node_modules
+
+# removing editor related files
+.vscode

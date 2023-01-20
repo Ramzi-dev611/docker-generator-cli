@@ -1,0 +1,21 @@
+{
+  "name": "docker-cli-generator",
+  "version": "1.0.0",
+  "description": "This project contains the cli tool for generating dockerfiles and docker compose files based on the user inputs",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
+    "figlet": "^1.5.2",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^9.1.4",
+    "nanospinner": "^1.1.0"
+  }
+}
