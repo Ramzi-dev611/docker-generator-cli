@@ -1,5 +1,7 @@
 #!/user/bin/env node 
-import welcome from "./welcome.js"
+import welcome from "./welcome.js";
+import operation from './operation.js'
 
-
-await welcome()
+await welcome();
+const op = await operation();
+console.log(op)
