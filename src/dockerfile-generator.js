@@ -1,7 +1,7 @@
 import { createSpinner } from "nanospinner";
-import getTemplate from './utilities/getTemplate.js'
-import { sleep } from "./utilities/sleep.js";
 import inquirer from "inquirer";
+import { sleep } from "./utilities/sleep.js";
+import getTemplate from './utilities/getTemplate.js'
 
 export const applicationTypes = {
     react: 'React',
@@ -10,7 +10,10 @@ export const applicationTypes = {
     next: 'Nextjs',
     nestjs: 'Nestjs',
     springboot: 'Spring Boot',
-    dotNet: '.Net'
+    dotNet: 'DotNet',
+    django: 'Django',
+    flask: 'Flask',
+    fastApi: 'FastApi'
 }
 
 export const environmentTypes = {
@@ -35,8 +38,11 @@ const dockerfileGenerator = async () => {
         type: 'list',
         choices: Object.values(environmentTypes),
     }])
-    const templateContent = await getTemplate(templateFileAnswers.application_type, templateFileAnswers.application_env);
+    const dockerfile = `${templateFileAnswers.application_type}.${templateFileAnswers.application_env}`;
+    
+
+
     
 }
 
-export default dockerfileGenerator;
+export default dockerfileGenerator; 

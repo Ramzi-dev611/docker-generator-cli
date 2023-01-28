@@ -1,1 +1,15 @@
-this is falfoul {{ image }}
+From node:{{version}}-alpine
+
+WORKDIR /app
+
+{{ environment_variables }}
+
+COPY package.* .
+
+RUN npm install
+
+COPY . . 
+
+EXPOSE {{port}}
+
+CMD [ "npm run dev" ]
