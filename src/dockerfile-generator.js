@@ -39,7 +39,8 @@ const dockerfileGenerator = async () => {
         choices: Object.values(environmentTypes),
     }])
     const dockerfile = `${templateFileAnswers.application_type}.${templateFileAnswers.application_env}`;
-    
+    const content = await getTemplate(templateFileAnswers.application_type, templateFileAnswers.application_env)
+    console.log(content);
 
 
     
