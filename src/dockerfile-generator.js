@@ -9,7 +9,7 @@ export const applicationTypes = {
     vue: 'Vue',
     next: 'Nextjs',
     nestjs: 'Nestjs',
-    springboot: 'Spring Boot',
+    springboot: 'Spring-Boot',
     dotNet: 'DotNet',
     django: 'Django',
     flask: 'Flask',
@@ -41,9 +41,6 @@ const dockerfileGenerator = async () => {
     const dockerfile = `${templateFileAnswers.application_type}.${templateFileAnswers.application_env}`;
     const content = await getTemplate(templateFileAnswers.application_type, templateFileAnswers.application_env)
     console.log(content);
-
-
-    
 }
 
 export default dockerfileGenerator; 

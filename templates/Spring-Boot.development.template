@@ -1,0 +1,13 @@
+FROM maven:{{mvn_version}}-jdk-{{jdk_version}}-slim
+
+USER java
+
+WORKDIR /usr/src/application
+
+COPY . .
+
+RUN mvn install -D maven.test.skip=true
+
+EXPOSE {{port}}
+
+ENTRYPOINT ["java","-jar","./target/*.jar"]
