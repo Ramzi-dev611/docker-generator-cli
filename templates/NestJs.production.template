@@ -1,6 +1,6 @@
 ## Build phase
 
-FROM node:{{version}}-alpine as Build
+FROM node:{{node_version}}-alpine as Build
 
 WORKDIR /usr/src/app
 
@@ -20,7 +20,7 @@ USER node
 
 ## Production environment
 
-FROM node:{{version}}-alpine as Production
+FROM node:{{node_version}}-alpine as Production
 
 USER node
 

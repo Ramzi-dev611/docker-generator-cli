@@ -1,0 +1,29 @@
+## Build phase
+FROM node:{{node_version}}-alpine as build
+
+USER node
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm ci
+
+RUN npm install react-scripts@3.4.1 -g
+
+COPY . ./
+
+RUN npm run build
+
+# Production environment
+
+FROM nginx:{{nginx_version}}-alpine
+
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
+## The default behavior of nginc is preseved. If you want you can add a custom nginx.config file
+## to the production phase where you can customize more the nginx server behavior

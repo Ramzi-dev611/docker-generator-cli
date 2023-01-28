@@ -1,4 +1,4 @@
-From node:{{version}}-alpine
+From node:{{node_version}}-alpine
 
 WORKDIR /app
 
