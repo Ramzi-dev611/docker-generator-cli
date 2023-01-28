@@ -1,14 +1,16 @@
 From node:{{node_version}}-alpine
 
-WORKDIR /app
+USER node
+
+WORKDIR /usr/src/app
 
 {{ environment_variables }}
 
-COPY package.* .
+COPY --chown=node:node package.* .
 
 RUN npm install
 
-COPY . . 
+COPY --chown=node:node . . 
 
 EXPOSE {{port}}
 

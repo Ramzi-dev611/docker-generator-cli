@@ -9,8 +9,6 @@ COPY --chown node:node package*.json ./
 
 RUN npm ci
 
-RUN npm install react-scripts@3.4.1 -g
-
 COPY --chown=node:node . ./
 
 RUN npm run build
@@ -27,5 +25,5 @@ EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
 
-## The default behavior of nginc is preseved. If you want you can add a custom nginx.config file
+## The default behavior of nginx is preseved. If you want you can add a custom nginx.config file
 ## to the production phase where you can customize more the nginx server behavior
