@@ -1,0 +1,33 @@
+FROM python:{{pyhton_version}}-alpine
+
+RUN apt-get clean && apt-get update
+
+RUN apt-get install -y nginx python3-dev build-essential
+
+COPY {{path_to_nginx_config}} /etc/nginx
+
+RUN apt-get install -y python-virtualenv
+
+USER python 
+
+WORKDIR /usr/src/app
+
+RUN python3 -m venv venv
+
+RUN ./venv/bin/activate
+
+COPY --chown=python:python requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt --src /usr/local/src
+
+COPY --chown=python:python . .
+
+RUN echo "#!/usr/bin/env bash\n service nginx start \nuwsgi --ini uwsgi.ini" >> start.sh
+
+RUN chmod +x ./start.sh
+
+expose {{port}}
+
+CMD ["./start.sh"]
+
+## Match the port that you expose with the port specified in the nginx.config file
