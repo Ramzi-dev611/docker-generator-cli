@@ -17,6 +17,8 @@ WORKDIR /usr/src/app
 
 COPY --chown=java:java --from=builder /usr/src/app/target/*.jar ./app.jar
 
+{{environment_variables}}
+
 EXPOSE {{port}}
 
 CMD ["java","-jar","/home/project/app.jar"]

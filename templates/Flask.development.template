@@ -16,6 +16,8 @@ RUN pip3 install -r requirements.txt
 
 COPY --chown=python:python  . .
 
+{{environment_variables}} 
+
 EXPOSE {{port}}
 
 CMD [ "flask", "run", "--host=0.0.0.0", "--port={{port}}"]

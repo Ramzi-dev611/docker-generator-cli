@@ -8,6 +8,8 @@ COPY . .
 
 RUN mvn install -D maven.test.skip=true
 
+{{environment_variables}}
+
 EXPOSE {{port}}
 
 ENTRYPOINT ["java","-jar","./target/*.jar"]

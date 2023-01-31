@@ -28,6 +28,8 @@ RUN chmod +x ./start.sh
 
 expose {{port}}
 
+{{environment_variables}}
+
 CMD ["./start.sh"]
 
 ## Match the port that you expose with the port specified in the nginx.config file
