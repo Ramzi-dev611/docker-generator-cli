@@ -10,6 +10,8 @@ RUN npm install
 
 COPY --chown=node:node . .
 
+{{enviroment_variables}}
+
 EXPOSE {{port}}
 
 CMD npm run dev

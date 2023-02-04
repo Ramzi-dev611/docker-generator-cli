@@ -2,7 +2,8 @@ import { createSpinner } from "nanospinner";
 import inquirer from "inquirer";
 import { sleep } from "./utilities/sleep.js";
 import getTemplate from './utilities/getTemplate.js'
-import Mustache from 'mustache'
+import Mustache from 'mustache';
+import chalk from 'chalk'
 
 const JSFrontendApplicationTypes = {
     react: 'React',
@@ -61,7 +62,7 @@ const getEnvironmentVariables = async (nbEnv) => {
                 type: 'input'
             }
         ])
-        enviroment_entries += `ENV ${envVar.env_name}=${envVar.env_value}\n\n`;
+        enviroment_entries += `ENV ${envVar.env_name}` + '=' + `${envVar.env_value}\n`;
     }
     return enviroment_entries;
 } 
@@ -140,8 +141,48 @@ const csharpBasedDockerfileGenerator = async (content) => {
     return Mustache.render(content, values);
 }
 
-const javascriptBasedDockerfileGenerator = async (content, appType) => {
+const javascriptBasedDockerfileGenerator = async (content, appType, envType) => {
+    const node_version = (await inquirer.prompt({
+        message: 'What is the version of node that you are working with?',
+        name: "node_version",
+        type: "list", 
+        choices: ["latest", "19", "18", "16"]
+    })).node_version
 
+    if(Object.values(JSFrontendApplicationTypes).includes(appType)) {
+        if(envType == 'development') {
+            const port = (await inquirer.prompt({
+                name: "port",
+                message: "What port do you wish to expose your application on? (default is 3000)",
+                type: 'number',
+                default: 3000
+            })).port
+            return Mustache.render(content, {node_version, port});
+        }
+        const nginx_version = (await inquirer.prompt({
+            message: "What version of nginx you want to use?",
+            name: 'nginx_version',
+            type: "list",
+            choices: []
+        })).nginx_version;
+        return Mustache.render(content, {node_version, nginx_version})
+    }
+    const answers = await inquirer.prompt([
+        {
+            name: "port",
+            message: "What port do you wish to expose your application on? (default is 3000)",
+            type: 'number',
+            default: 3000
+        }, 
+        {
+            name: "nb_env",
+            message: "How many environment variables you want to define? (default is 0)",
+            type: "number",
+            default: 0
+        }
+    ]);
+    const environment_variables = await getEnvironmentVariables(answers.nb_env);
+    return Mustache.render(content, {node_version, port: answers.port, environment_variables});
 }
 
 const pythonBasedDockerfileGenerator = async () => {
@@ -178,11 +219,11 @@ const dockerfileGenerator = async () => {
         } else if(Object.values(PythonApplicationTypes).includes(appType)){
             result = await pythonBasedDockerfileGenerator(content);
         } else {
-            result = await javascriptBasedDockerfileGenerator(content, appType)
+            result = await javascriptBasedDockerfileGenerator(content, appType, envType)
         }
         generatorSpinner.success(`${appType} dockerfile generated successfully`);
         console.log("\n\n")
-        console.log(result)
+        console.log(chalk.green(result))
         console.log("\n\n")
     } else {
         const content = await getTemplate(appType, 'dockerfile');
@@ -192,7 +233,7 @@ const dockerfileGenerator = async () => {
         const result =  await csharpBasedDockerfileGenerator(content);
         csSpinner.success('Dotnet dockerfile generated successfully')
         console.log("\n\n")
-        console.log(result)
+        console.log(chalk.green(result))
         console.log("\n\n")
     }
 }
