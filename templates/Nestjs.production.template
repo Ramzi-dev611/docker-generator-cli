@@ -10,8 +10,6 @@ RUN npm ci
 
 COPY --chown=node:node . .
 
-{{ environment_variables }}
-
 ENV NODE_ENV production
 
 RUN npm run build
@@ -32,7 +30,7 @@ RUN npm ci --only=production && npm cache clean --force
 
 COPY --chown=node:node --from=Build /usr/src/app/dist ./dist
 
-{{ environment_variables }}
+{{{ environment_variables }}}
 
 ENV NODE_ENV production
 

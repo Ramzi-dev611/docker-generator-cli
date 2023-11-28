@@ -1,0 +1,25 @@
+FROM python:{{python_version}}
+
+ENV PYTHONUNBUFFERED 1
+ENV DJANGO_SETTINGS_MODULE={{project_name}}.settings.dev
+{{{environment_variables}}}
+
+WORKDIR /app
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    postgresql-client \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /app/
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+COPY . /app/
+
+EXPOSE {{port}}
+
+RUN python manage.py migrate
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:{{port}}"]
+

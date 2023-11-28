@@ -18,7 +18,7 @@ WORKDIR /App
 
 COPY --chown=dotnet:dotnet --from=build-env /usr/src/app/out .
 
-{{environment_variables}}
+{{{environment_variables}}}
 
 EXPOSE {{port}}
 

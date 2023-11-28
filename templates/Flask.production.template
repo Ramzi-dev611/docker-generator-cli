@@ -1,10 +1,10 @@
-FROM python:{{pyhton_version}}-alpine
+FROM python:{{python_version}}-alpine
 
 RUN apt-get clean && apt-get update
 
 RUN apt-get install -y nginx python3-dev build-essential
 
-COPY {{path_to_nginx_config}} /etc/nginx
+COPY {{{path_to_nginx_config}}} /etc/nginx
 
 RUN apt-get install -y python-virtualenv
 
@@ -28,7 +28,7 @@ RUN chmod +x ./start.sh
 
 expose {{port}}
 
-{{environment_variables}}
+{{{environment_variables}}}
 
 CMD ["./start.sh"]
 

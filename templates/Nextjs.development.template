@@ -10,7 +10,7 @@ RUN npm install
 
 COPY --chown=node:node . .
 
-{{enviroment_variables}}
+{{{environment_variables}}}
 
 EXPOSE {{port}}
 

@@ -1,4 +1,3 @@
-## Build phase
 FROM node:{{node_version}}-alpine as build
 
 USER node
@@ -27,5 +26,5 @@ EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
 
-## The default behavior of nginc is preseved. If you want you can add a custom nginx.config file
+## The default behavior of nginx is preseved. If you want you can add a custom nginx.config file
 ## to the production phase where you can customize more the nginx server behavior

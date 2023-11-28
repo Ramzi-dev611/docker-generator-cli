@@ -10,13 +10,13 @@ RUN python3 -m venv venv
 
 RUN ./venv/bin/activate
 
-COPY --chown=python:python {{dependancies_file_name}} requirements.txt
+COPY --chown=python:python ./requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
 
 COPY --chown=python:python  . .
 
-{{environment_variables}} 
+{{{environment_variables}}} 
 
 EXPOSE {{port}}
 
