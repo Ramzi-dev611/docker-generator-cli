@@ -328,7 +328,7 @@ __metadata:
     mustache: ^4.2.0
     nanospinner: ^1.1.0
   bin:
-    docker-cli-generator: ./src
+    docker-cli-generator: ./src/index.js
   languageName: unknown
   linkType: soft
 

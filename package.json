@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src"
   },
-  "bin": "./src",
+  "bin": "./src/index.js",
   "keywords": [
     "devops",
     "docker",
