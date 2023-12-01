@@ -327,6 +327,8 @@ __metadata:
     inquirer: ^9.2.12
     mustache: ^4.2.0
     nanospinner: ^1.1.0
+  bin:
+    docker-cli-generator: ./src/index.js
   languageName: unknown
   linkType: soft
 

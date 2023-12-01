@@ -7,8 +7,16 @@
   "scripts": {
     "start": "node src"
   },
-  "keywords": [],
-  "author": "",
+  "bin": "./src/index.js",
+  "keywords": [
+    "devops",
+    "docker",
+    "docker-compose",
+    "cli",
+    "generator",
+    "builder"
+  ],
+  "author": "Ramzi LATROUS",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.3.0",
@@ -18,5 +26,6 @@
     "inquirer": "^9.2.12",
     "mustache": "^4.2.0",
     "nanospinner": "^1.1.0"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }
