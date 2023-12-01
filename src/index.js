@@ -10,7 +10,7 @@ while(op !== Operationtypes.exit) {
     op = await operation();
     if (op === Operationtypes.dockerfile) {
         await generateDockerFile();
-    } else {
+    } else if (op === Operationtypes.dockerCompose)  {
         await generateDockerComposeFile();
     }
 }
