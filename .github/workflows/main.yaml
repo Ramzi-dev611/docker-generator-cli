@@ -36,3 +36,20 @@ jobs:
               with:
                 github_token: ${{ secrets.TOKEN_GITHUB }}
                 branch: ${{ github.ref }}
+
+    publish-package:
+        runs-on: ubuntu-latest
+        steps:
+            - name: clone-source-code
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+
+            - name: install-dependancies
+              run: yarn
+              shell: bash
+
+            - name: publish-package
+              run: yarn npm publish
+              env:
+                NODE_AUTH_TOKEN: ${{ secrets.NODE_TOKEN }}
