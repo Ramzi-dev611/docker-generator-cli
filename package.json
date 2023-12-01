@@ -1,6 +1,6 @@
 {
   "name": "docker-cli-generator",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "This project contains the cli tool for generating dockerfiles and docker compose files based on the user inputs",
   "type": "module",
   "main": "index.js",
