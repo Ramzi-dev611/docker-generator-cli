@@ -1,4 +1,4 @@
-FROM maven:{{mvn_version}}-jdk-{{jdk_version}}-slim as builder
+FROM maven:{{{mvn_version}}}-jdk-{{{jdk_version}}}-slim as builder
 
 USER java
 
@@ -9,7 +9,7 @@ COPY --chown=java:java . .
 RUN mvn install -D maven.test.skip=true
 
 
-FROM adoptopenjdk/openjdk{{jdk_version}}:alpine-jre as runtime
+FROM adoptopenjdk/openjdk{{{jdk_version}}}:alpine-jre as runtime
 
 USER java
 
@@ -19,6 +19,6 @@ COPY --chown=java:java --from=builder /usr/src/app/target/*.jar ./app.jar
 
 {{{environment_variables}}}
 
-EXPOSE {{port}}
+EXPOSE {{{port}}}
 
 CMD ["java","-jar","/home/project/app.jar"]

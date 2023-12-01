@@ -1,0 +1,7 @@
+  {{{service_name}}}:
+    image: rabbitmq:{{{queue_version}}}-management-alpine
+    container_name: '{{{container_name}}}'
+    hostname: {{{hostname}}}
+    ports:
+        - {{{queue_port}}}:5672
+        - {{{queue_ui_port}}}:15672

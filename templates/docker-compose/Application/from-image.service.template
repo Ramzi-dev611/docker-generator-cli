@@ -1,0 +1,6 @@
+    {{{service_name}}}:
+        container_name: {{{container_name}}}
+        hostname: {{{hostname}}}
+        image: {{{image}}}
+{{{environment_variables}}}
+{{{ports}}}

@@ -1,7 +1,7 @@
 import { createSpinner } from "nanospinner";
 import inquirer from "inquirer";
 import { sleep } from "./utilities/sleep.js";
-import getTemplate from './utilities/getTemplate.js'
+import getTemplate from './utilities/getDockerfileTemplate.js'
 import Mustache from 'mustache';
 import chalk from 'chalk'
 

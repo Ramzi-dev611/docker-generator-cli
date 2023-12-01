@@ -1,5 +1,5 @@
 ## Build phase
-FROM node:{{node_version}}-alpine as build
+FROM node:{{{node_version}}}-alpine as build
 
 USER node
 
@@ -15,7 +15,7 @@ RUN npm run build
 
 # Production environment
 
-FROM nginx:{{nginx_version}}-alpine
+FROM nginx:{{{nginx_version}}}-alpine
 
 USER node
 

@@ -1,4 +1,4 @@
-FROM python:{{python_version}}-alpine
+FROM python:{{{python_version}}}-alpine
 
 RUN apt-get clean && apt-get update
 
@@ -26,7 +26,7 @@ RUN echo "#!/usr/bin/env bash\n service nginx start \nuwsgi --ini uwsgi.ini" >> 
 
 RUN chmod +x ./start.sh
 
-expose {{port}}
+expose {{{port}}}
 
 {{{environment_variables}}}
 

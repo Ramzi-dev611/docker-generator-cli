@@ -1,4 +1,4 @@
-FROM node:{{node_version}}-alpine as build
+FROM node:{{{node_version}}}-alpine as build
 
 USER node
 
@@ -13,7 +13,7 @@ COPY --chown=node:node . .
 RUN npm run build
 
 # production stage
-FROM nginx:{{nginx_version}}-alpine as production
+FROM nginx:{{{nginx_version}}}-alpine as production
 
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 

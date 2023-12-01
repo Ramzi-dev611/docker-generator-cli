@@ -1,0 +1,12 @@
+    mongo-express:
+        depends_on: 
+            - {{{database_service}}}
+        image: mongo-express
+        container_name: {{{container_name}}}
+        restart: always
+        ports:
+            - {{{port}}}:8081
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: {{{database_user}}}
+            ME_CONFIG_MONGODB_ADMINPASSWORD: {{{database_password}}}
+            ME_CONFIG_MONGODB_URL: mongodb://{{{database_user}}}:{{{database_password}}}@mongo:{{{database_port}}}/

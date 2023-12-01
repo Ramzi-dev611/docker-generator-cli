@@ -1,0 +1,11 @@
+    kafka_ui:
+        image: provectuslabs/kafka-ui:0.3.3
+        container_name: {{{container_name}}}
+        depends_on:
+            - {{{queue_service}}}
+        environment:
+            KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+            KAFKA_CLUSTERS_0_NAME: local
+            KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: {{{queue_host}}}:{{{queue_port}}}
+        ports:
+            - '{{{port}}}:8080'

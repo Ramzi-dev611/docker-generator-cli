@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:{{dotnet_sdk_version}} AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:{{{dotnet_sdk_version}}} AS build-env
 
 USER dotnet
 
@@ -10,7 +10,7 @@ RUN dotnet restore
 
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:{{aspnet_version}}
+FROM mcr.microsoft.com/dotnet/aspnet:{{{aspnet_version}}}
 
 USER dotnet
 
@@ -20,6 +20,6 @@ COPY --chown=dotnet:dotnet --from=build-env /usr/src/app/out .
 
 {{{environment_variables}}}
 
-EXPOSE {{port}}
+EXPOSE {{{port}}}
 
 ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]

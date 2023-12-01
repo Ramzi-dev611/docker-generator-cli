@@ -1,4 +1,4 @@
-FROM node:{{node_version}}-alpine as BUILD_IMAGE
+FROM node:{{{node_version}}}-alpine as BUILD_IMAGE
 
 USER node
 
@@ -14,7 +14,7 @@ RUN npm run build
 
 RUN npm prune --production
 
-FROM node:{{node_version}}-alpine as PRODUCTION_IMAGE
+FROM node:{{{node_version}}}-alpine as PRODUCTION_IMAGE
 
 USER node
 
@@ -27,6 +27,6 @@ COPY --chown=node:node --from=BUILD_IMAGE /app/public ./public
 
 {{{environment_variables}}}
 
-EXPOSE {{port}}
+EXPOSE {{{port}}}
 
 CMD ["npm", "start"]

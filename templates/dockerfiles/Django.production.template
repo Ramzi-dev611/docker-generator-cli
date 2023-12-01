@@ -1,4 +1,4 @@
-FROM python:{{python_version}}-alpine as builder
+FROM python:{{{python_version}}}-alpine as builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 COPY . /app/ 
 
 # Stage 2: Production image
-FROM python:{{python_version}}-alpine
+FROM python:{{{python_version}}}-alpine
 
 WORKDIR /app
 
@@ -29,7 +29,7 @@ ENV DJANGO_SETTINGS_MODULE=myproject.settings.prod
 RUN python manage.py collectstatic --noinput
 
 # Expose the port that Gunicorn will run on
-EXPOSE {{port}}
+EXPOSE {{{port}}}
 
 # Run Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:{{port}}", "myproject.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:{{{port}}}", "myproject.wsgi:application"]

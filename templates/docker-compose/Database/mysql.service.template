@@ -1,0 +1,13 @@
+    {{{service_name}}}:
+        container_name: {{{container_name}}}
+        hostname: {{{hostname}}}
+        image: mysql:{{{database_version}}}
+        environment:
+            - MYSQL_DATABASE: '{{{database_database}}}'
+            - MYSQL_USER: '{{{database_user}}}'
+            - MYSQL_PASSWORD: '{{{database_password}}}'
+            - MYSQL_ROOT_PASSWORD: '{{{database_root_password}}}'
+        ports:
+            - '{{{database_port}}}:3306'
+        volumes:
+            - mysql-volume:/var/lib/mysql

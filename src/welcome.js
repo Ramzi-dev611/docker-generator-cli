@@ -24,9 +24,13 @@ const welcome = async () => {
     });
     await sleep(3000);
     rainbow.stop();
-    console.log(`This cli tool is created to help you create started ${chalk.bgGreen('Dockerfiles')} and ${chalk.bgGreen('docker-compose files')} from predefined templates`)
+    console.log(
+        `This cli tool is created to help you create started ${chalk.bgGreen(chalk.black(chalk.bold('Dockerfiles')))} and ${chalk.bgGreen(chalk.bold(chalk.black('docker-compose files')))} from predefined templates`
+    )
     console.log(`All you have to do is to specify the file you want to generate and the it's spec`)
-    console.log(`For any information about the source code of this cli visit the github repository: https://github.com/Ramzi-dev611/docker-generator-cli`)
+    console.log(
+        `For any information about the source code of this cli visit the github repository: https://github.com/Ramzi-dev611/docker-generator-cli`
+    )
 };
 
 export default welcome;

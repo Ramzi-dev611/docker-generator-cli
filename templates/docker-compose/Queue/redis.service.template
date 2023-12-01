@@ -1,0 +1,12 @@
+    {{{service_name}}}:
+        container_name: {{{container_name}}}
+        hostname: {{{hostname}}}
+        image: redis:{{{queue_version}}}-alpine
+        restart: always
+        ports:
+            - '{{{queue_port}}}:6379'
+        command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+        volumes: 
+            - redis-volume:/data
+
+{{{redis_commander}}}

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const readTemplate = async (type, env) => {
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const template_path = resolve(__dirname, '..', '..', `templates/${type}.${env}.template`)
+    const template_path = resolve(__dirname, '..', '..', `templates/dockerfiles/${type}.${env}.template`)
     let data = '';
     try {
         data = await fs.readFile(template_path, { encoding: 'utf-8' });

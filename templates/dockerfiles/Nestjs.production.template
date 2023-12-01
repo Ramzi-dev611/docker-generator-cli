@@ -1,6 +1,6 @@
 ## Build phase
 
-FROM node:{{node_version}}-alpine as Build
+FROM node:{{{node_version}}}-alpine as Build
 
 WORKDIR /usr/src/app
 
@@ -18,7 +18,7 @@ USER node
 
 ## Production environment
 
-FROM node:{{node_version}}-alpine as Production
+FROM node:{{{node_version}}}-alpine as Production
 
 USER node
 
@@ -34,6 +34,6 @@ COPY --chown=node:node --from=Build /usr/src/app/dist ./dist
 
 ENV NODE_ENV production
 
-EXPOSE {{port}}
+EXPOSE {{{port}}}
 
 CMD [ "node", "dist/main.js" ]

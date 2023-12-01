@@ -1,4 +1,4 @@
-FROM maven:{{mvn_version}}-jdk-{{jdk_version}}-slim
+FROM maven:{{{mvn_version}}}-jdk-{{{jdk_version}}}-slim
 
 USER java
 
@@ -10,6 +10,6 @@ RUN mvn install -D maven.test.skip=true
 
 {{{environment_variables}}}
 
-EXPOSE {{port}}
+EXPOSE {{{port}}}
 
 ENTRYPOINT ["java","-jar","./target/*.jar"]

@@ -1,0 +1,11 @@
+    redis-commander:
+        depends_on:
+            - {{{redis_service}}}
+        container_name: {{{container_name}}}
+        image: rediscommander/redis-commander:latest
+        environment:
+            - REDIS_HOSTS=local:{{{redis_hostname}}}:{{{redis_port}}}
+            - HTTP_USER={{{redis_commander_user}}}
+            - HTTP_PASSWORD={{{redis_commander_password}}}
+        ports:
+            - {{{port}}}:8081
