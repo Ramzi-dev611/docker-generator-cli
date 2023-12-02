@@ -1,4 +1,4 @@
-#!/user/bin/env node 
+#!/usr/bin/env node 
 import welcome from "./welcome.js";
 import operation, { Operationtypes } from './operation.js'
 import generateDockerFile from './dockerfile-generator.js';
