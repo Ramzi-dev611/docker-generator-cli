@@ -1,43 +1,54 @@
-# Docker init CLI
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Docker+CLI+Generator;Helping+you+with+docker+spec+files&center=true&width=900&height=100&size=42&vCenter=true&background=dddddd&color=843a99)](https://git.io/typing-svg)
 
-This repository containes the source code of a cli tool created to help it's users create and manage dockerfiles and docker compose files when needed
+Our project aims to help you, through a series of question, in the generation of docker spec files. Based on the my experience as a Software developer, the CLI help generate:
+
+* **dockerfiles**: taking examples of multiple application types, from front-end apps with **React**, **Angular** or **View**, to server applications of multiple platforms
+* **docker-compose files**: helping you set up multiple service types that can cover your most basic needs
 
 ## Usages
 
-For the moment since the tool is still being created and not yet pushed to npm registry, youcna download the source code from here, install dependecies using:
+The package is now available on npm publicly and made available for you to experiment with. To use it, all you have to do is execute the following command:
 
 ```bash
-> npm install
+
+> npx docker-cli-generator
+
 ```
 
-and than run the cli using the command
+And Happy Hacking
+
+## Developer Guide
+
+To work with this package locally you can clone the repository and run the following commands to get started:
+
+* Install dependancies
 
 ```bash
-> npm start
+
+> yarn
+
 ```
 
-## Available functionalities
+* initiate husky to ensure commit linting
 
-The cli tool aims to provide it's users the ability to help generate dockerfiles and docker-compose files needed for dockerizing applicatioons and testing systems in local environments
+```bash
 
-### Dockerfiles
+> yarn husky:prepare
 
-the cli will provide it's users the ability to create dockerfiles for most of the known project types with the ability to customize the stages of building the image, and including a variety of docker base images and steps
+```
 
-The project types that it will handle for a first release are :
+* launch the application
 
-* Javascript front and backend applications of different types of frameworks (React, Angular, Vue, Express, Nest, ...)
+```bash
 
-* Java applications, from J2EE applications to Spring and Spring Boot applications
+> yarn start
 
-* C# applications created in .Net framework
+```
 
-### Docker-compose
+## Road-map & Contribution
 
-The cli will provide the users the ability to deside the number of services desired in the docker compose file, their types and their caracteristics (setting environment variables, attaching volumes and creating virtual networks)
+No set of rules is made for this repository. It's a project that I started for fun and nothing serious about it so feel free to do whatever you want with it.
 
-## Roadmap
+For the published package, reach me through issues or contact me directly if you have any suggestions to improve the tool
 
-The goal is to create a useful tool to help minimize the effort of research each time of how to dockerize applications and push the tool to the public in npm registry
-
-Once this goal is achieved, adding more features to the cli tool is an option
+Handling other spec files generation is also an option that could be done in the future
