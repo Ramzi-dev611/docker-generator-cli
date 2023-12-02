@@ -5,7 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "husky:prepare": "husky install && yarn husky:add-linter",
+    "husky:add-linter": "husky add .husky/commit-msg 'npx --no -- commitlint --edit ${1}'"
   },
   "bin": "./src/index.js",
   "keywords": [
@@ -27,5 +29,10 @@
     "mustache": "^4.2.0",
     "nanospinner": "^1.1.0"
   },
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.2.3",
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "husky": "^8.0.3"
+  }
 }
